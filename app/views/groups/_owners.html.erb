@@ -1,0 +1,43 @@
+<style>
+    #tab-content-owners fieldset label {display: block;}
+    #tab-content-owners fieldset legend {font-weight: bold;}
+</style>
+<div class="splitcontentleft">
+  <% if @group.owners.any? %>
+      <table class="list users">
+        <thead><tr>
+          <th><%= l(:label_owner) %></th>
+          <th style="width:15%"></th>
+        </tr></thead>
+        <tbody>
+        <% @group.owners.sort.each do |user| %>
+            <tr id="owner-<%= user.id %>" class="<%= cycle 'odd', 'even' %>">
+              <td class="user"><%= link_to_user user %></td>
+              <td class="buttons">
+                <%= delete_link group_owner_path(@group, :user_id => user), :remote => true %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <p class="nodata"><%= l(:label_no_data) %></p>
+  <% end %>
+</div>
+
+<div class="splitcontentright" style="width:34%">
+  <%= form_for(@group, :remote => true, :url => group_owners_path(@group),
+               :html => {:method => :post}) do |f| %>
+      <fieldset><legend><%=l(:label_user_owner)%></legend>
+
+        <p><%= label_tag "owner_search", l(:label_user_search) %><%= text_field_tag 'owner_search', nil, :style => 'width:90%' %></p>
+        <%= javascript_tag "observeSearchfield('owner_search', null, '#{ escape_javascript autocomplete_for_owner_group_path(@group) }')" %>
+
+        <div id="owners">
+          <%= render_principals_for_new_group_owners(@group) %>
+        </div>
+
+        <p><%= submit_tag l(:button_add) %></p>
+      </fieldset>
+  <% end %>
+</div>
