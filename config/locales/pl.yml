@@ -1,0 +1,5 @@
+# Polish strings go here for Rails i18n
+pl:
+   label_owner_plural: Właściciele
+   label_owner: Właściciel
+   label_user_owner: Nowy właściciel
