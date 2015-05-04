@@ -3,7 +3,7 @@ Redmine::Plugin.register :redmine_group_owners do
   name 'Redmine Group Owners plugin'
   author 'Ramiz Raja'
   description 'This is a plugin for Redmine to allow admins to add owners for a group to manage it.'
-  version '1.0.0'
+  version '2.0.0'
   url 'http://www.redmine.org/plugins/redmine_group_owners'
   author_url 'http://www.linkedin.com/in/ramizraja'
 

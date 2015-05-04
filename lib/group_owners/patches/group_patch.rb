@@ -7,6 +7,11 @@ module GroupOwners
           unloadable
           has_many :group_owners, :dependent => :destroy
           has_many :owners, :through => :group_owners, :source => :user
+          safe_attributes 'name',
+                          'user_ids',
+                          'custom_field_values',
+                          'custom_fields',
+                          :if => lambda {|group, user| (user.admin? || (group.persisted? ? group.owners.include?(user) : user.owned_groups.any?)) && !group.builtin?}
         end
       end
       module InstanceMethods

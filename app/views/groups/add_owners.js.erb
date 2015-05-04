@@ -1,3 +1,4 @@
+hideModal();
 $('#tab-content-owners').html('<%= escape_javascript(render :partial => 'groups/owners') %>');
 <% @users.each do |user| %>
   $('#owner-<%= user.id %>').effect("highlight");
