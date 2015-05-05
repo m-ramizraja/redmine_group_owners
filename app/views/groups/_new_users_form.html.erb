@@ -1,0 +1,15 @@
+<%= javascript_include_tag 'group_owner.js', plugin: 'redmine_group_owners' %>
+<fieldset class="box">
+  <legend><%= label_tag "user_search", l(:label_user_search) %></legend>
+  <p>
+    <label><%= l(:label_select_group) %>:</label>
+    <%= select_tag 'available_groups', options_for_select((User.current.available_groups - [@group]).collect{|group| [group.name, group.id]}), include_blank: true %>
+   </p>
+  <p><%= text_field_tag 'user_search', nil %></p>
+  <%= javascript_tag "observeSearchfieldGroups('user_search', null, '#{ escape_javascript autocomplete_for_user_group_path(@group) }')" %>
+  <%= javascript_tag "observeDropdownGroups('available_groups', null, '#{ escape_javascript autocomplete_for_user_group_path(@group) }')" %>
+
+  <div id="users">
+    <%= render_principals_for_new_group_users(@group) %>
+  </div>
+</fieldset>

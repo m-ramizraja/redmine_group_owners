@@ -3,7 +3,7 @@
   <p><%= text_field_tag 'user_search', nil %></p>
   <%= javascript_tag "observeSearchfield('user_search', null, '#{ escape_javascript autocomplete_for_owner_group_path(@group) }')" %>
 
-  <div id="users">
+  <div id="owners">
     <%= render_principals_for_new_group_owners(@group) %>
   </div>
 </fieldset>
