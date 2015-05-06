@@ -4,3 +4,6 @@ en:
    label_owner: Owner
    label_user_owner: New owner
    label_select_group: Select group
+   label_auto_register_url: Page
+   field_auto_register_url: Auto add URL
+

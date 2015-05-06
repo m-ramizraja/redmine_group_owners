@@ -15,6 +15,7 @@ module GroupOwners
           tabs << {:name => 'general', :partial => 'groups/general', :label => :label_general}
           tabs << {:name => 'users', :partial => 'groups/users', :label => :label_user_plural} if group.givable?
           tabs << {:name => 'memberships', :partial => 'groups/memberships', :label => :label_project_plural} << {:name => 'owners', :partial => 'groups/owners', :label => :label_owner_plural} if User.current.admin?
+          tabs << {:name => 'auto_register_url', :partial => 'groups/auto_register_url', :label => :label_auto_register_url} if group.givable?
           tabs
         end
 

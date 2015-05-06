@@ -9,6 +9,7 @@ module GroupOwners
           has_many :group_owners, :dependent => :destroy
           has_many :owners, :through => :group_owners, :source => :user
           safe_attributes 'name',
+                          'auto_register_url',
                           'user_ids',
                           'custom_field_values',
                           'custom_fields',

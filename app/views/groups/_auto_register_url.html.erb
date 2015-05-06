@@ -1,0 +1,10 @@
+<%= labelled_form_for @group, :url => group_path(@group) do |f| %>
+    <%= error_messages_for @group %>
+
+    <div class="box tabular">
+      <p><%= f.text_field :auto_register_url, :size => 80,
+                          :disabled => !@group.safe_attribute?('auto_register_url')  %></p>
+
+    </div>
+    <%= submit_tag l(:button_save) %>
+<% end %>
