@@ -15,7 +15,7 @@ module GroupOwners
               begin
                 url_action = Rails.application.routes.recognize_path(group.auto_register_url)[:action]
                 url_controller = Rails.application.routes.recognize_path(group.auto_register_url)[:controller]
-                if params[:controller].eql?(url_controller) && params[:action].eql?(url_action) && request.host.downcase.eql?(URI.parse(group.auto_register_url).host.downcase)
+                if params[:controller].eql?(url_controller) && params[:action].eql?(url_action)
                   group.users << User.current unless group.users.include?(User.current)
                 end
               rescue ActionController::RoutingError
